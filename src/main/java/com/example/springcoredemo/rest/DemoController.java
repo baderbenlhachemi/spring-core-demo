@@ -11,9 +11,14 @@ public class DemoController {
     private Coach myCoach; // Define a private field for the dependency
 
     @Autowired // Tells Spring to inject the dependency. If we have one constructor, we can omit @Autowired
-    public DemoController(Coach coach) { // Constructor injection
+    public DemoController(Coach coach) { // Constructor injection, use it when we have required dependencies
         this.myCoach = coach;
     }
+
+//    @Autowired
+//    public void setCoach(Coach myCoach) { // Setter injection, use it when we have optional dependencies
+//        this.myCoach = myCoach;
+//    }
 
     @GetMapping("/dailyworkout")
     public String getDailyWorkout() {
