@@ -14,6 +14,7 @@ public class DemoController {
     @Autowired // Tells Spring to inject the dependency. If we have one constructor, we can omit @Autowired
     public DemoController(@Qualifier("baseballCoach") Coach coach) { // Constructor injection, use it when we have required dependencies
         this.myCoach = coach;
+        System.out.println("In constructor: " + this.getClass().getName());
     }
 
 //    @Autowired
