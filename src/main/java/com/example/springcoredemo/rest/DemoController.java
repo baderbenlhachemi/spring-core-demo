@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     private Coach myCoach; // Define a private field for the dependency
+    private Coach anotherCoach;
 
     @Autowired // Tells Spring to inject the dependency. If we have one constructor, we can omit @Autowired
-    public DemoController(@Qualifier("baseballCoach") Coach coach) { // Constructor injection, use it when we have required dependencies
-        this.myCoach = coach;
+    public DemoController(@Qualifier("baseballCoach") Coach theCoach,
+                          @Qualifier("baseballCoach") Coach anotherCoach) { // Constructor injection, use it when we have required dependencies
+        this.myCoach = theCoach;
+        this.anotherCoach = anotherCoach;
+
         System.out.println("In constructor: " + this.getClass().getName());
     }
 
@@ -25,5 +29,10 @@ public class DemoController {
     @GetMapping("/dailyworkout")
     public String getDailyWorkout() {
         return myCoach.getDailyWorkout();
+    }
+
+    @GetMapping("/check")
+    public String check() {
+        return "Comparing beans: (myCoach == anotherCoach), " + (myCoach == anotherCoach);
     }
 }

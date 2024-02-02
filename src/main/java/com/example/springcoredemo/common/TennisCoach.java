@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
-@Lazy // Tells Spring to create a bean only when it is requested
+//@Lazy // Tells Spring to create a bean only when it is requested
 public class TennisCoach implements Coach {
 
     public TennisCoach() {
